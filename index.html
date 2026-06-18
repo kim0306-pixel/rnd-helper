@@ -1434,7 +1434,10 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
 
       area.innerHTML = json.items.map(p => renderPatentCard(p)).join('');
       if (json.items.length) {
-        savePatentHistory(json.items[0].title || query, query, _patentSearchType);
+        const first = json.items[0];
+        const saveQuery = first.applicationNumber || query;
+        const saveType  = first.applicationNumber ? 'application' : _patentSearchType;
+        savePatentHistory(first.title || query, saveQuery, saveType);
       }
     } catch(e) {
       area.innerHTML = '<div class="board-empty">조회 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.</div>';
