@@ -286,10 +286,10 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
     <nav>
       <button class="nav-tab active" onclick="switchPanel('home', this)">홈</button>
       <button class="nav-tab" onclick="switchPanel('doi', this)">논문 조회</button>
+      <button class="nav-tab" onclick="switchPanel('patent', this)">특허 조회</button>
       <button class="nav-tab" onclick="switchPanel('faq', this)">자주 묻는 질문</button>
       <button class="nav-tab" onclick="switchPanel('chat', this)">AI 상담</button>
       <button class="nav-tab" onclick="switchPanel('board', this)">상담 게시판</button>
-      <button class="nav-tab" onclick="switchPanel('patent', this)">특허 조회</button>
       <button class="nav-tab" onclick="switchPanel('notice', this)">공지사항</button>
       <button class="nav-tab" onclick="switchPanel('iris', this)">IRIS 바로가기</button>
     </nav>
@@ -316,6 +316,15 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
         <div class="home-card-arrow">바로가기 →</div>
       </div>
 
+      <div class="home-card" onclick="goPanel('patent')">
+        <div class="home-card-icon" style="background:#f5f0ff;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="home-card-title">특허 조회</div>
+        <div class="home-card-desc">출원번호·등록번호·발명 명칭으로 특허 서지정보를 조회합니다.<br><span style="font-size:11px;color:var(--tm);">KIPRIS DB 사용</span></div>
+        <div class="home-card-arrow">바로가기 →</div>
+      </div>
+
       <div class="home-card" onclick="goPanel('faq')">
         <div class="home-card-icon" style="background:#e8f5ef;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#17734f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/><circle cx="12" cy="12" r="10"/></svg>
@@ -334,23 +343,8 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
         <div class="home-card-arrow">바로가기 →</div>
       </div>
 
-      <div class="home-card" onclick="goPanel('board')">
-        <div class="home-card-icon" style="background:#fdf0f0;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b83232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <div class="home-card-title">상담 게시판</div>
-        <div class="home-card-desc">익명으로 질문을 남기면 담당자가 답변해 드립니다.</div>
-        <div class="home-card-arrow">바로가기 →</div>
-      </div>
 
-      <div class="home-card" onclick="goPanel('patent')">
-        <div class="home-card-icon" style="background:#f5f0ff;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
-        <div class="home-card-title">특허 조회</div>
-        <div class="home-card-desc">출원번호·등록번호·발명 명칭으로 특허 서지정보를 조회합니다.<br><span style="font-size:11px;color:var(--tm);">KIPRIS DB 사용</span></div>
-        <div class="home-card-arrow">바로가기 →</div>
-      </div>
+
 
     </div>
 
@@ -361,6 +355,11 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
 
   <!-- DOI/제목 검색 패널 -->
   <div id="panel-doi" class="panel">
+    <div style="margin-bottom:16px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">논문 조회</div>
+      <h1 style="font-size:20px;font-weight:600;">논문 조회</h1>
+      <p style="margin-top:5px;font-size:13px;color:var(--ts);">DOI 또는 논문 제목으로 서지정보를 자동 조회합니다. CrossRef DB 사용 · <strong>영문 검색 시 더 정확합니다.</strong></p>
+    </div>
 
     <div class="search-card">
       <div class="search-tabs">
@@ -418,7 +417,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
     <div style="margin-bottom:20px;">
       <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">AI 상담</div>
       <h1 style="font-size:20px;font-weight:600;">AI 상담 챗봇</h1>
-      <p style="margin-top:5px;font-size:13px;color:var(--ts);">국가연구개발 성과입력 관련 궁금한 점을 질문하세요. FAQ 데이터 기반으로 답변합니다.</p>
+      <p style="margin-top:5px;font-size:13px;color:var(--ts);">국가연구개발 성과입력 관련 궁금한 점을 질문하세요.</p>
     </div>
 
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column;height:520px;">
@@ -442,12 +441,16 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
     <div style="margin-bottom:20px;">
       <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">특허 조회</div>
       <h1 style="font-size:20px;font-weight:600;">특허 조회</h1>
-      <p style="margin-top:5px;font-size:13px;color:var(--ts);">출원번호, 등록번호 또는 발명 명칭으로 특허 서지정보를 조회합니다.</p>
+      <p style="margin-top:5px;font-size:13px;color:var(--ts);">출원번호, 등록번호 또는 발명 명칭으로 특허 서지정보를 조회합니다. KIPRIS DB 사용 · <strong>비공개 특허는 검색되지 않습니다.</strong></p>
     </div>
 
     <div class="search-card">
       <div class="search-tabs">
-        <button class="stab active" id="ptab-application" onclick="switchPatentSearch('application')">
+        <button class="stab active" id="ptab-word" onclick="switchPatentSearch('word')">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          발명 명칭
+        </button>
+        <button class="stab" id="ptab-application" onclick="switchPatentSearch('application')">
           <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           출원번호
         </button>
@@ -455,13 +458,9 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           등록번호
         </button>
-        <button class="stab" id="ptab-word" onclick="switchPatentSearch('word')">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          발명 명칭
-        </button>
       </div>
       <div class="search-body">
-        <div id="patent-application-panel">
+        <div id="patent-application-panel" style="display:none;">
           <div class="input-row">
             <input class="s-input" id="patent-app-input" placeholder="출원번호 입력 (예: 10-2024-0012345)" onkeydown="if(event.key==='Enter') searchPatent()">
             <button class="s-btn" onclick="searchPatent()">조회</button>
@@ -475,7 +474,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
           </div>
           <p style="margin-top:8px;font-size:12px;color:var(--tm);">하이픈(-) 포함 또는 미포함 모두 가능합니다.</p>
         </div>
-        <div id="patent-word-panel" style="display:none;">
+        <div id="patent-word-panel">
           <div class="input-row">
             <input class="s-input" id="patent-word-input" placeholder="발명 명칭 입력 (예: 인공지능 기반 이미지 분류)" onkeydown="if(event.key==='Enter') searchPatent()">
             <button class="s-btn" onclick="searchPatent()">조회</button>
@@ -485,6 +484,12 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
     </div>
 
     <div id="patent-result-area"></div>
+
+    <!-- 특허 최근 조회 기록 -->
+    <div id="patent-history-section" style="margin-top:28px;">
+      <div style="font-size:12px;font-weight:600;color:var(--tm);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">최근 조회 기록</div>
+      <div id="patent-history-list"></div>
+    </div>
   </div>
 
   <!-- 공지사항 패널 -->
@@ -626,6 +631,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
     if (id === 'board') loadBoard();
     if (id === 'faq') loadFaqData();
     if (id === 'notice') loadNotice();
+    if (id === 'patent') renderPatentHistory();
 
   }
   function switchSearch(type) {
@@ -1362,7 +1368,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
 
 
   /* ── 특허 조회 ── */
-  let _patentSearchType = 'application';
+  let _patentSearchType = 'word';
 
   function switchPatentSearch(type) {
     _patentSearchType = type;
@@ -1400,6 +1406,9 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
       }
 
       area.innerHTML = json.items.map(p => renderPatentCard(p)).join('');
+      if (json.items.length) {
+        savePatentHistory(json.items[0].title || query, query, _patentSearchType);
+      }
     } catch(e) {
       area.innerHTML = '<div class="board-empty">조회 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.</div>';
     }
@@ -1434,7 +1443,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
       + '</div>'
       + '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:16px 20px 8px;">'
       + '<div class="patent-title" style="padding:0;flex:1;">' + esc(p.title || '제목 없음') + '</div>'
-      + '<button class="cell-copy-btn" style="font-size:11px;padding:3px 10px;flex-shrink:0;margin-top:2px;" onclick="copySingleCell(this, this.dataset.v)" data-v="' + titleSafe + '">복사</button>'
+      + '<button class="cell-copy-btn" style="flex-shrink:0;margin-top:2px;" onclick="copySingleCell(this, this.dataset.v)" data-v="' + titleSafe + '">복사</button>'
       + '</div>'
       + '<div class="patent-grid">'
       + cell('출원번호', p.applicationNumber)
@@ -1442,9 +1451,52 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
       + cell('등록번호', p.registrationNumber)
       + cell('등록일', p.registrationDate)
       + cell('출원인', p.applicant)
-      + cell('발명자', p.inventor)
+      + cell('발명자', p.inventors || '-')
       + '</div>'
       + '</div>';
+  }
+
+
+  /* ── 특허 최근 조회 기록 ── */
+  const PATENT_HISTORY_KEY = 'patent_history';
+
+  function savePatentHistory(title, query, type) {
+    try {
+      const hist = JSON.parse(localStorage.getItem(PATENT_HISTORY_KEY) || '[]');
+      const filtered = hist.filter(h => !(h.query === query && h.type === type));
+      filtered.unshift({ title, query, type, date: new Date().toLocaleDateString('ko-KR') });
+      localStorage.setItem(PATENT_HISTORY_KEY, JSON.stringify(filtered.slice(0, 10)));
+      renderPatentHistory();
+    } catch(e) {}
+  }
+
+  function renderPatentHistory() {
+    const el = document.getElementById('patent-history-list');
+    if (!el) return;
+    try {
+      const hist = JSON.parse(localStorage.getItem(PATENT_HISTORY_KEY) || '[]');
+      if (!hist.length) {
+        el.innerHTML = '<p style="font-size:13px;color:var(--tm);padding:8px 0;">조회 기록이 없습니다.</p>';
+        return;
+      }
+      const typeLabel = { application: '출원번호', registration: '등록번호', word: '발명명칭' };
+      el.innerHTML = hist.map(h =>
+        '<div style="display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);gap:10px;">'
+        + '<div style="flex:1;min-width:0;">'
+        + '<div style="font-size:13px;color:var(--tp);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + esc(h.title) + '</div>'
+        + '<div style="font-size:11px;color:var(--tm);">' + (typeLabel[h.type] || '') + ' · ' + esc(h.query) + '</div>'
+        + '</div>'
+        + '<button onclick="reSearchPatent(this.dataset.q, this.dataset.t)" data-q="' + esc(h.query) + '" data-t="' + h.type + '" style="font-size:11px;padding:3px 8px;border:1px solid var(--border2);border-radius:4px;background:var(--surface);cursor:pointer;color:var(--accent);flex-shrink:0;">다시 조회</button>'
+        + '</div>'
+      ).join('');
+    } catch(e) {}
+  }
+
+  function reSearchPatent(query, type) {
+    switchPatentSearch(type);
+    const inputMap = { application: 'patent-app-input', registration: 'patent-reg-input', word: 'patent-word-input' };
+    const el = document.getElementById(inputMap[type]);
+    if (el) { el.value = query; searchPatent(); }
   }
 
 </script>
