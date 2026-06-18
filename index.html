@@ -462,6 +462,14 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
       <div class="search-body">
         <div id="patent-application-panel" style="display:none;">
           <div class="input-row">
+            <select id="patent-app-country" style="height:44px;padding:0 10px;border:1px solid var(--border2);border-radius:var(--r2);font-size:14px;font-family:inherit;color:var(--tp);background:var(--surface);outline:none;flex-shrink:0;">
+              <option value="KR" selected>🇰🇷 한국</option>
+              <option value="US">🇺🇸 미국</option>
+              <option value="EP">🇪🇺 유럽</option>
+              <option value="JP">🇯🇵 일본</option>
+              <option value="CN">🇨🇳 중국</option>
+              <option value="WO">🌐 PCT</option>
+            </select>
             <input class="s-input" id="patent-app-input" placeholder="출원번호 입력 (예: 10-2024-0012345)" onkeydown="if(event.key==='Enter') searchPatent()">
             <button class="s-btn" onclick="searchPatent()">조회</button>
           </div>
@@ -469,6 +477,14 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
         </div>
         <div id="patent-registration-panel" style="display:none;">
           <div class="input-row">
+            <select id="patent-reg-country" style="height:44px;padding:0 10px;border:1px solid var(--border2);border-radius:var(--r2);font-size:14px;font-family:inherit;color:var(--tp);background:var(--surface);outline:none;flex-shrink:0;">
+              <option value="KR" selected>🇰🇷 한국</option>
+              <option value="US">🇺🇸 미국</option>
+              <option value="EP">🇪🇺 유럽</option>
+              <option value="JP">🇯🇵 일본</option>
+              <option value="CN">🇨🇳 중국</option>
+              <option value="WO">🌐 PCT</option>
+            </select>
             <input class="s-input" id="patent-reg-input" placeholder="등록번호 입력 (예: 10-1234567)" onkeydown="if(event.key==='Enter') searchPatent()">
             <button class="s-btn" onclick="searchPatent()">조회</button>
           </div>
@@ -479,6 +495,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
             <input class="s-input" id="patent-word-input" placeholder="발명 명칭 입력 (예: 인공지능 기반 이미지 분류)" onkeydown="if(event.key==='Enter') searchPatent()">
             <button class="s-btn" onclick="searchPatent()">조회</button>
           </div>
+          <p style="margin-top:8px;font-size:12px;color:var(--tm);">🇰🇷 한국 특허만 검색 가능합니다. 해외 특허는 출원번호 또는 등록번호 탭에서 국가를 선택하여 검색하세요.</p>
         </div>
       </div>
     </div>
@@ -1391,8 +1408,18 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
     const area = document.getElementById('patent-result-area');
     area.innerHTML = '<div class="loading-wrap"><div class="spinner"></div><span>KIPRIS에서 조회 중...</span></div>';
 
+    // 국가코드 가져오기
+    let country = 'KR';
+    if (_patentSearchType === 'application') {
+      const sel = document.getElementById('patent-app-country');
+      if (sel) country = sel.value;
+    } else if (_patentSearchType === 'registration') {
+      const sel = document.getElementById('patent-reg-country');
+      if (sel) country = sel.value;
+    }
+
     try {
-      const url = APPS_SCRIPT_URL + '?action=patent&type=' + _patentSearchType + '&query=' + encodeURIComponent(query);
+      const url = APPS_SCRIPT_URL + '?action=patent&type=' + _patentSearchType + '&query=' + encodeURIComponent(query) + '&country=' + country;
       const res  = await fetch(url);
       const json = await res.json();
 
