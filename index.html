@@ -455,10 +455,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           등록번호
         </button>
-        <button class="stab" id="ptab-word" onclick="switchPatentSearch('word')">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          발명 명칭
-        </button>
+
       </div>
       <div class="search-body">
         <div id="patent-application-panel">
@@ -475,13 +472,14 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
           </div>
           <p style="margin-top:8px;font-size:12px;color:var(--tm);">하이픈(-) 포함 또는 미포함 모두 가능합니다.</p>
         </div>
+
+      </div>
         <div id="patent-word-panel" style="display:none;">
           <div class="input-row">
             <input class="s-input" id="patent-word-input" placeholder="발명 명칭 입력 (예: 인공지능 기반 이미지 분류)" onkeydown="if(event.key==='Enter') searchPatent()">
             <button class="s-btn" onclick="searchPatent()">조회</button>
           </div>
         </div>
-      </div>
     </div>
 
     <div id="patent-result-area"></div>
