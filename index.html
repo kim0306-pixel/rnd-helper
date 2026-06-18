@@ -1425,21 +1425,24 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
         + '</div></div>';
     };
 
+    const titleSafe = (p.title || '제목 없음').replace(/"/g, '&quot;');
     return '<div class="patent-card">'
       + '<div class="patent-header">'
       + '<svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>'
       + '<span>KIPRIS 데이터베이스</span>'
       + (p.status ? '<span class="patent-status">' + esc(p.status) + '</span>' : '')
       + '</div>'
-      + '<div class="patent-title">' + esc(p.title || '제목 없음') + '</div>'
+      + '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:16px 20px 8px;">'
+      + '<div class="patent-title" style="padding:0;flex:1;">' + esc(p.title || '제목 없음') + '</div>'
+      + '<button class="cell-copy-btn" style="font-size:11px;padding:3px 10px;flex-shrink:0;margin-top:2px;" onclick="copySingleCell(this, this.dataset.v)" data-v="' + titleSafe + '">복사</button>'
+      + '</div>'
       + '<div class="patent-grid">'
       + cell('출원번호', p.applicationNumber)
-      + cell('등록번호', p.registrationNumber)
       + cell('출원일', p.applicationDate)
+      + cell('등록번호', p.registrationNumber)
       + cell('등록일', p.registrationDate)
-      + cellFull('출원인', p.applicant)
-      + cellFull('발명자', p.inventor)
-      + cellFull('IPC 분류', p.ipc)
+      + cell('출원인', p.applicant)
+      + cell('발명자', p.inventor)
       + '</div>'
       + '</div>';
   }
