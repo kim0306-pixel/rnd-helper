@@ -1362,7 +1362,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
       // Apps Script 프록시를 통해 Groq 호출
       const res = await fetch(APPS_SCRIPT_URL + '?action=chat&message=' + encodeURIComponent(q));
       const data = await res.json();
-      const answer = data.answer || data.error || '답변을 가져오지 못했습니다. 다시 시도해 주세요.';
+      const answer = data.answer || (data.error && data.error.includes('429') ? '요청이 너무 많습니다. 1분 후 다시 시도해 주세요.' : data.error) || '답변을 가져오지 못했습니다. 다시 시도해 주세요.';
       removeTyping(typingId);
       appendChatMsg('bot', answer);
       chatHistory.push({ role: 'model', parts: [{ text: answer }] });
