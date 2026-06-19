@@ -740,14 +740,21 @@ main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
   }
   function switchPanel(id, btn) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
-    document.getElementById('panel-' + id).classList.add('active');
-    btn.classList.add('active');
+    const panel = document.getElementById('panel-' + id);
+    if (!panel) return;
+    panel.classList.add('active');
+    document.querySelectorAll('.nav-tab, .nav-group-btn, .nav-dropdown-item, .sidebar-item').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('[data-panel="' + id + '"]').forEach(b => {
+      b.classList.add('active');
+      const group = b.closest('.nav-group');
+      if (group) group.querySelector('.nav-group-btn').classList.add('active');
+    });
+    document.querySelectorAll('.nav-group').forEach(g => g.classList.remove('open'));
+    document.querySelectorAll('.nav-group-btn').forEach(b => b.classList.remove('open'));
     if (id === 'board') loadBoard();
     if (id === 'faq') loadFaqData();
     if (id === 'notice') loadNotice();
     if (id === 'patent') renderPatentHistory();
-
   }
   function switchSearch(type) {
     document.getElementById('search-doi-panel').style.display   = type === 'doi'   ? '' : 'none';
